@@ -252,7 +252,7 @@ export default function UserDetailsModal() {
           onMouseOver={(e) => e.target.style.backgroundColor = '#0056b3'}
           onMouseOut={(e) => e.target.style.backgroundColor = '#007bff'}
         >
-          Open Form 
+         Open Form
         </button>
       </div>
 
@@ -281,6 +281,7 @@ export default function UserDetailsModal() {
                   <input
                     type="text"
                     name="username"
+                    id="username"
                     value={formData.username}
                     onChange={handleInputChange}
                     style={{
@@ -302,6 +303,7 @@ export default function UserDetailsModal() {
                   <input
                     type="email"
                     name="email"
+                    id ="email"
                     value={formData.email}
                     onChange={handleInputChange}
                     style={{
@@ -323,6 +325,7 @@ export default function UserDetailsModal() {
                   <input
                     type="tel"
                     name="phone"
+                    id="phone"
                     value={formData.phone}
                     onChange={handleInputChange}
                     style={{
@@ -344,6 +347,7 @@ export default function UserDetailsModal() {
                   <input
                     type="date"
                     name="dateOfBirth"
+                    id='dob'
                     value={formData.dateOfBirth}
                     onChange={handleInputChange}
                     style={{
@@ -360,6 +364,7 @@ export default function UserDetailsModal() {
                 <button
                   onClick={handleSubmit}
                   style={styles.submitButton}
+                  className='submit-button'
                   onMouseOver={(e) => e.target.style.backgroundColor = '#0056b3'}
                   onMouseOut={(e) => e.target.style.backgroundColor = '#007bff'}
                 >
