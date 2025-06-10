@@ -36,53 +36,64 @@ const App = () => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { username, email, phone, dob } = formData;
+const handleSubmit = (e) => {
+  e.preventDefault();
+  const { username, email, phone, dob } = formData;
 
-    if (!username) {
-      alert("Please fill out the Username.");
-      return;
-    }
-    if (!email) {
-      alert("Please fill out the Email Address.");
-      return;
-    }
-    if (!phone) {
-      alert("Please fill out the Phone Number.");
-      return;
-    }
-    if (!dob) {
-      alert("Please fill out the Date of Birth.");
-      return;
-    }
+  if (!username) {
+    alert("Please fill out the Username.");
+    return;
+  }
+  if (!email) {
+    alert("Please fill out the Email Address.");
+    return;
+  }
+  if (!phone) {
+    alert("Please fill out the Phone Number.");
+    return;
+  }
+  if (!dob) {
+    alert("Please fill out the Date of Birth.");
+    return;
+  }
 
-    if (!email.includes("@")) {
-      alert("Invalid email. Please check your email address.");
-      return;
-    }
+  // Email must contain "@"
+  if (!email.includes("@")) {
+    alert("Invalid email. Please check your email address.");
+    return;
+  }
 
-    if (!/^\d{10}$/.test(phone)) {
-      alert("Invalid phone number. Please enter a 10-digit phone number.");
-      return;
-    }
+  // Phone number must be exactly 10 digits
+  if (!/^\d{10}$/.test(phone)) {
+    alert("Invalid phone number. Please enter a 10-digit phone number.");
+    return;
+  }
 
-    const selectedDate = new Date(dob);
-    const today = new Date();
-    if (selectedDate > today) {
-      alert("Invalid date of birth. Please enter a valid date.");
-      return;
-    }
+  // Date of birth cannot be in the future
+  const selectedDate = new Date(dob);
+  const today = new Date();
 
-    // All valid
-    setFormData({
-      username: "",
-      email: "",
-      phone: "",
-      dob: ""
-    });
-    setModalOpen(false);
-  };
+  // Remove time portion for accurate comparison
+  selectedDate.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+
+  if (selectedDate > today) {
+    alert("Invalid date of birth. Date of birth cannot be in the future.");
+    return;
+  }
+
+  // All fields are valid
+  alert("Form submitted successfully!");
+
+  setFormData({
+    username: "",
+    email: "",
+    phone: "",
+    dob: "",
+  });
+  setModalOpen(false);
+};
+
 
   return (
     <div className="App">
