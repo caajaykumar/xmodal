@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 
 export default function UserDetailsModal() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  c const [isModalOpen, setModalOpen] = useState(false);
+  const modalRef = useRef();
+
   const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    phone: '',
-    dateOfBirth: ''
+    username: "",
+    email: "",
+    phone: "",
+    dob: ""
   });
-  const [errors, setErrors] = useState({});
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
